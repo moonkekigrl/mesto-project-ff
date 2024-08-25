@@ -21,6 +21,7 @@ const newCardForm = document.querySelector('.popup_type_new-card .popup__form');
 const cardName = newCardForm.querySelector('.popup__input_type_card-name');
 const cardImage = newCardForm.querySelector('.popup__input_type_url');
 
+
 //редактирование данных профиля
 function handleProfileForm(evt) {
     evt.preventDefault();

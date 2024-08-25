@@ -17,7 +17,6 @@ export function createCard (cardValue, deleteCard, cardTemplate, openImagePopup)
     return cardItem;
 };
 
-
 //функция удаления карточки
 export function deleteCard(cardItem) {
     return cardItem.remove();
