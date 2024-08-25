@@ -14,182 +14,183 @@
 */
 
 .theme-menu__button {
-    display: inline-block;
-    font-family: var(--accent-font);
-    font-size: 14px;
-    text-transform: uppercase;
-    color: var(--text-color);
-    background: transparent;
-    border: none;
-    position: relative;
-    transition: linear color 0.3s;
+  display: inline-block;
+  font-family: var(--accent-font);
+  font-size: 14px;
+  text-transform: uppercase;
+  color: var(--text-color);
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  position: relative;
+  transition: linear color 0.3s;
 }
   
 .theme-menu__button:disabled::before {
-    content: '▶';
-    position: absolute;
-    inset-inline-start: -58%;
-    width: 100%;
-    height: 100%;
-    animation: menu-button ease-in-out 0.5s infinite;
+  content: '▶';
+  position: absolute;
+  inset-inline-start: -58%;
+  width: 100%;
+  height: 100%;
+  animation: menu-button 0.5s ease-in-out infinite alternate;
 }
   
 .theme-menu__button:disabled {
-    pointer-events: none;
-    color: var(--active-button-color);
+  pointer-events: none;
+  color: var(--active-button-color);
 }
   
 @keyframes menu-button {
-    0% {
-      translate: 0;
-    }
-    100% {
-      translate: 4px;
-    }
+  0% {
+    translate: 0;
+  }
+  100% {
+    translate: 4px;
+  }
 }
   
 .theme-menu__button:hover {
-    color: var(--active-button-color);
+  color: var(--active-button-color);
 }
   
 .theme-menu__button::after {
-    content: '';
-    width: 0px;
-    height: 2px;
-    display: block;
-    background: var(--active-button-color);
-    transition: 0.3s;
+  content: '';
+  width: 0px;
+  height: 2px;
+  display: block;
+  background: var(--active-button-color);
+  transition: 0.3s;
 }
   
 .theme-menu__button:hover::after {
-    width: 100%;
+  width: 100%;
 }
   
 .theme-menu__button:focus {
-    outline: none;
+  outline: none;
 }
   
 .theme-menu__button:focus-visible {
-    color: var(--active-button-color);
+  color: var(--active-button-color);
 }
   
 .theme-menu__button:focus-visible::after {
-    width: 100%;
+  width: 100%;
 }
+
 .core {
-    fill: transparent;
+  fill: transparent;
 }
 
 .main-body {
-    fill: transparent;
+  fill: transparent;
 }
 
 .like-icon:hover .core {
-    fill: var( --contour-color);
-    transition: fill 0.3s 0.03s linear;
+  fill: var( --contour-color);
+  transition: fill 0.3s 0.03s linear;
 }
 
 .like-icon:hover .main-body {
-    fill: var( --contour-color);
-    transition: fill 0.3s 0.05s linear;
+  fill: var( --contour-color);
+  transition: fill 0.3s 0.05s linear;
 }
 
 .like-icon:active .core {
-    fill: var(--sparks-color);
-    transition: fill 0.3s 0.03s linear;
+  fill: var(--sparks-color);
+  transition: fill 0.3s 0.03s linear;
 }
   
 .like-icon:active .main-body {
-    fill: var(--sparks-color);
-    transition: fill 0.3s 0.05s linear;
+  fill: var(--sparks-color);
+  transition: fill 0.3s 0.05s linear;
 }
 
 .like-icon.is-liked .core {
-    fill: var(--filling-color);
-    transition: fill 0.3s 0.03s linear;
+  fill: var(--filling-color);
+  transition: fill 0.3s 0.03s linear;
 }
   
 .like-icon.is-liked .main-body {
-    fill: var(--filling-color);
-    transition: fill 0.3s 0.05s linear;
+  fill: var(--filling-color);
+  transition: fill 0.3s 0.05s linear;
 }
 
 .like-icon .sparks {
-    opacity: 0;
+  opacity: 0;
 }
   
 .like-icon.is-liked .contour {
-    fill: var(--filling-color);
-    transition: fill 0.3s 0.06s linear;
+  fill: var(--filling-color);
+  transition: fill 0.3s 0.06s linear;
 }
   
 .like-icon.is-liked .heart {
-    transform-origin: center;
-    animation: heart 0.3s 0.1s ease-in;
+  transform-origin: center;
+  animation: heart 0.3s 0.1s ease-in;
 }
 
 .like-icon.is-liked .sparks {
-    transform-origin: center;
-    animation: sparks 0.3s 0.3s ease-in;
+  transform-origin: center;
+  animation: sparks 0.3s 0.3s ease-in;
 }
   
 @keyframes heart {
-    0% {
-      scale: 1;
-    }
-    50% {
-      scale: 1.5;
-    }
-  
-    100% {
-      scale: 1;
-    }
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.5;
+  }
+  100% {
+    scale: 1;
+  }
 }
   
-  @keyframes sparks {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+@keyframes sparks {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes towelie-gradient {
-    0% {
-      background: conic-gradient(from 80deg,#ffa0ee,#9f14ff,#5bd7fe,#46ffd7,yellow,orange,#e41e9d,#ffa0ee);
-    }
-    14.3% {
-      background: conic-gradient(from 80deg,#9f14ff,#5bd7fe,#46ffd7,yellow,orange,#e41e9d,#ffa0ee,#9f14ff);
-    }
-    28.6% {
-      background: conic-gradient(from 80deg,#5bd7fe,#46ffd7,yellow,orange,#e41e9d,#ffa0ee,#9f14ff,#5bd7fe);
-    }
-    42.9% {
-      background: conic-gradient(from 80deg,#46ffd7,yellow,orange,#e41e9d,#ffa0ee,#9f14ff,#5bd7fe,#46ffd7);
-    }
-    57.2% {
-      background: conic-gradient(from 80deg,yellow,orange,#e41e9d,#ffa0ee,#9f14ff,#5bd7fe,#46ffd7,yellow);
-    }
-    71.5% {
-      background: conic-gradient(from 80deg,orange,#e41e9d,#ffa0ee,#9f14ff,#5bd7fe,#46ffd7,yellow,orange);
-    }
-    85.8% {
-      background: conic-gradient(from 80deg,#e41e9d, #ffa0ee,#9f14ff,#5bd7fe,#46ffd7,yellow,orange,#e41e9d);
-    }
-    100% {
-      background: conic-gradient(from 80deg,#ffa0ee,#9f14ff,#5bd7fe,#46ffd7,yellow,orange,#e41e9d,#ffa0ee);
-    }
+  0% {
+    background: conic-gradient(from 80deg,#ffa0ee,#9f14ff,#5bd7fe,#46ffd7,yellow,orange,#e41e9d,#ffa0ee);
+  }
+  14.3% {
+    background: conic-gradient(from 80deg,#9f14ff,#5bd7fe,#46ffd7,yellow,orange,#e41e9d,#ffa0ee,#9f14ff);
+  }
+  28.6% {
+    background: conic-gradient(from 80deg,#5bd7fe,#46ffd7,yellow,orange,#e41e9d,#ffa0ee,#9f14ff,#5bd7fe);
+  }
+  42.9% {
+    background: conic-gradient(from 80deg,#46ffd7,yellow,orange,#e41e9d,#ffa0ee,#9f14ff,#5bd7fe,#46ffd7);
+  }
+  57.2% {
+    background: conic-gradient(from 80deg,yellow,orange,#e41e9d,#ffa0ee,#9f14ff,#5bd7fe,#46ffd7,yellow);
+  }
+  71.5% {
+     background: conic-gradient(from 80deg,orange,#e41e9d,#ffa0ee,#9f14ff,#5bd7fe,#46ffd7,yellow,orange);
+  }
+  85.8% {
+    background: conic-gradient(from 80deg,#e41e9d, #ffa0ee,#9f14ff,#5bd7fe,#46ffd7,yellow,orange,#e41e9d);
+  }
+  100% {
+    background: conic-gradient(from 80deg,#ffa0ee,#9f14ff,#5bd7fe,#46ffd7,yellow,orange,#e41e9d,#ffa0ee);
+  }
 }
 
 @keyframes dalek-gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
   }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

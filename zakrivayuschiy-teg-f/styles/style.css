@@ -14,6 +14,10 @@
 */
 
 .page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   min-inline-size: 320px;
   min-block-size: 100dvb;
   background-color: var(--bg-color);
@@ -26,31 +30,31 @@
 
 .header {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: var(--accent-font);
-  margin-block-start: 114px;
-  margin-block-end: 102px;
-}
-
-@media (width < 695px) {
-  .press-save_section {
-    width: auto;
-  }
-}
-
-.header_box {
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: var(--accent-font);
   gap: 20px;
   background-color: var(--bg-color);
   border: 2px solid var(--border-color);
   width: 696px;
-  height: 368px;
-  padding-block-start: 136px;
-  padding-block-end: 25px;
+  padding-block-start: 134px;
+  padding-block-end: 26px;
+  margin-block-start: 114px;
+  margin-block-end: 102px;
+}
+
+@media (width <= 375px) {
+  .header {
+    margin-block-start: 100px;
+    padding-block-start: 122px;
+  }
+}
+
+@media (width <= 700px) {
+  .header {
+    width: 100vw;
+  }
 }
 
 .heading {
@@ -60,7 +64,7 @@
 }
 
 .subheading {
-  font-size: clamp(14px, 3rem, 23px);
+  font-size: clamp(0.875rem, 0.677rem + 0.845vw, 1.438rem);
   text-transform: uppercase;
   color: var(--text-color);
 }
@@ -103,16 +107,16 @@ main {
 }
 
 .main_subheading {
-  font-weight: 700;
+  font-variation-settings: var(--main-font-weight-h);
   font-size: 18px;
-  margin: 3.5px auto 6px 10px;
+  margin: 3.5px auto 6px 14px;
 }
 
 .main_paragraph {
   display: flex;
   flex-direction: column;
   gap: 25px; 
-  font-weight: 400;
+  font-variation-settings: var(--main-font-weight-p);
   font-size: 18px;
   line-height: 117%;
   margin: 27px;
@@ -120,6 +124,8 @@ main {
 
 .image-n-logo {
   position: relative;
+  border-top: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
 }
 
 .card_logo {
@@ -128,7 +134,7 @@ main {
   font-size: 14px;
   font-weight: 400;
   color: var(--logo-color);
-  z-index: 1;
+  z-index: 2;
   inset-block-start: 6%;
   inset-inline-end: 3%;
   mix-blend-mode: hard-light;
@@ -139,13 +145,12 @@ main {
   0 -1px var(--text-shadow-color);
 }
 
-@supports((text-stroke: 1px var(--text-shadow-color)) or (-webkit-text-stroke: 1px var(--text-shadow-color))) {
-  .card_logo  {
+@supports ((text-stroke: 1px var(--text-shadow-color)) or (-webkit-text-stroke: 1px var(--text-shadow-color))) {
+  .card_logo {
     -webkit-text-stroke: 1px var(--text-shadow-color);
     text-shadow: none;
   }
 }
-
 
 @media (width > 473px) {
   .card_logo {
@@ -155,7 +160,7 @@ main {
 }
 
 .main_picture {
-  border-inline: none;
+  display: block;
   object-fit: cover;
   width: 100%;
   height: auto;
@@ -174,7 +179,6 @@ main {
 }
 
 .towelie {
-  display: block;
   filter: saturate(150%);
 }
 
@@ -182,7 +186,7 @@ main {
   position: absolute;
   inset: 0;
   opacity: 0.3;
-  z-index: 2;
+  z-index: 1;
   background: conic-gradient(from 80deg,#ffa0ee,#9f14ff,#5bd7fe,#46ffd7,yellow,orange,#e41e9d,#ffa0ee);
   animation: towelie-gradient 0.5s linear infinite;
 }
@@ -199,7 +203,7 @@ main {
   position: absolute;
   inset: 0;
   opacity: 0.8;
-  z-index: 2;
+  z-index: 1;
   background: radial-gradient(farthest-corner at bottom,#fffdcd, #ce9eff,#fa7fd2);
   background-size: 150%;
   animation: dalek-gradient 3.5s ease-in-out infinite;
@@ -298,8 +302,12 @@ main {
   mix-blend-mode: difference;
 }
 
+footer {
+  display: flex;
+  justify-content: center;
+}
+
 .press-save_section {
-  background-color: var(--bg-color);
   margin-block-end: 50px;
 }
 
@@ -314,6 +322,7 @@ main {
   justify-content: center;
   align-items: center;
   gap: 8px;
+  background-color: var(--bg-color);
   width: 340px;
 }
 
@@ -328,6 +337,7 @@ main {
 @media (width <= 375px) {
   .press-save_button {
     flex-direction: column;
+    width: 310px;
   }
 
   .floppy-disk {
@@ -340,6 +350,7 @@ main {
   padding: 0;
   position: fixed;
   inset: 0;
+  border: 2px solid var(--border-color);
   transition: opacity 0.3s ease-in-out;
 }
 
@@ -356,7 +367,6 @@ main {
   display: grid;
   column-gap: 20px;
   background-color: var(--bg-color);
-  border: 2px solid var(--accent-font);
   padding: 30px;
   width: 357px;
 }
@@ -377,6 +387,7 @@ main {
   font-weight: 400;
   font-size: 14px;
   line-height: 150%;
+  max-width: 233px;
   text-transform: uppercase;
   margin-block-end: 30px;
 }
@@ -391,10 +402,10 @@ main {
 @media (width <= 397px) {
   .dialog_content {
     width: 341px;
-    height: 191px;
   }
 
   .dialog_floppy-disk {
     width: 45px;
   }
 } 
+

@@ -2,7 +2,6 @@
 :root {
     --bg-color: #fff;
     --modal-bg-color: rgb(0 0 0/ 0.75);
-    --accent-color: #000;
     --border-color: #000;
     --text-color: #000;
     --button-fv-color: #000;
@@ -16,7 +15,8 @@
     --sparks-color: #FF0000;
     --accent-font: 'PressStart2P-Regular', sans-serif;
     --main-text-font: 'Inter-Variable', sans-serif;
-    --content-image: url(../images/food-truck.png);
+    --main-font-weight-h: 'wght' 700;
+    --main-font-weight-p: 'wght' 400;
     --bg-image:
         repeating-linear-gradient(to right, #d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px),
         repeating-linear-gradient(to top, #d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px),
