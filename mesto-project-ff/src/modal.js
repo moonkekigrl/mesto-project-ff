@@ -5,19 +5,19 @@ export function openModal(popup) {
     document.addEventListener('mousedown', closeByEsc);
 }
 
-export function closeModal(element) {
-    element.classList.remove('popup_is-opened');
-    element.removeEventListener('click', closeByOverlay);
+export function closeModal(popup) {
+    popup.classList.remove('popup_is-opened');
+    popup.removeEventListener('click', closeByOverlay);
     document.removeEventListener('keydown', closeByEsc);
 }
 
 //функция закрытия через Escape
 function closeByEsc(evt) {
     if (evt.key === 'Escape') {
-        const openedPopup = document.querySelector('.popup_is-opened');
-        closeModal(openedPopup);
-    }
-} 
+        closeModal(document.querySelector('.popup_is-opened'));
+        }
+}
+
 //функция закрытия через оверлэй
 function closeByOverlay(evt) {
     if (evt.currentTarget === evt.target) {
