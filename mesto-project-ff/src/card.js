@@ -1,8 +1,7 @@
-import { deleteMyCard, likeCard, removeLike } from "./api";
-import { cardTemplate, openImagePopup, openDeletePopup } from "./index.js";
+import { deleteCurrentUsersCard, likeCard, removeLike } from "./api";
 
 //функция создания карточки и проверки
-export function createCard (cardElement, cardTemplate, currentUserId, openImagePopup, openDeletePopup) {
+export function createCard (cardElement, cardTemplate, currentUserId, openImagePopup, deleteCard) {
     const cardItem = cardTemplate.querySelector('.card').cloneNode(true);
     const cardImage = cardItem.querySelector('.card__image');
     const likeButton = cardItem.querySelector('.card__like-button');
@@ -30,16 +29,26 @@ export function createCard (cardElement, cardTemplate, currentUserId, openImageP
         deleteButton.remove();
     } 
     
-    if (cardElement.owner._id === currentUserId) {
-    deleteButton.addEventListener('click', () => openDeletePopup( cardElement._id, deleteCard));
+    if (cardElement.owner._id === currentUserId._id) {
+        deleteButton.remove();
+    } else {
+        deleteButton.addEventListener('click', () => {
+            deleteCard( cardElement._id, cardItem);
+        });
     }
 
     cardItem.querySelector('.card__image').addEventListener('click', openImagePopup);
     return cardItem;
 }
     
-export function deleteCard(id) {
-    return deleteMyCard(id);
+export function deleteCard(id, cardItem) {
+    deleteCurrentUsersCard(id)
+    .then(() => {
+        cardItem.remove();
+    })
+    .catch((error) => {
+        console.error('Ошибка', error);
+    })
 }
 
 //функция постановки лайков

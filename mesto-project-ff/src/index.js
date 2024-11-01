@@ -4,7 +4,7 @@ import './pages/index.css';
 import {createCard, deleteCard} from './card.js';
 import { openModal, closeModal} from './modal.js';
 import {enableValidation, clearValidation} from './validation.js';
-import { fetchCardsData, fetchUserData, updateProfile, changeAvatar, viewCards } from './api.js';
+import { getCards, getUserData, updateProfile, changeAvatar, addCard } from './api.js';
 
 const container = document.querySelector('.content');
 const cardsContainer = container.querySelector('.places__list');
@@ -16,9 +16,6 @@ const cardPopupName = imagePopup.querySelector('.popup__caption');
 const newCardPopup = document.querySelector('.popup_type_new-card');
 const newCardPopupCloseButton = newCardPopup.querySelector('.popup__close');
 const addNewCardButton = document.querySelector('.profile__add-button');
-const deletePopupQuestion = document.querySelector('.popup_type_question');
-const submitDeleteButton = document.querySelector('form[name="card-delete"');
-const questionCloseButton = deletePopupQuestion.querySelector('.popup__close');
 const profileTitle = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__description');
 const profileImage = document.querySelector('.profile__image');
@@ -40,7 +37,7 @@ let currentUserId;
 
 //promise
 function fetchData() {
-    Promise.all([fetchUserData(), fetchCardsData()])
+    Promise.all([getUserData(), getCards()])
         .then(([userData, cardsData]) => {
             currentUserId = userData._id;
 
@@ -51,7 +48,7 @@ function fetchData() {
             // Вывести карточки на страницу
             cardsData.forEach((cardElement) => {
                 cardsContainer.appendChild(
-                    createCard(cardElement, cardTemplate, currentUserId, openImagePopup, openDeletePopup)
+                    createCard(cardElement, cardTemplate, currentUserId, openImagePopup, deleteCard)
             );
         })
     })
@@ -103,7 +100,7 @@ function handleCardForm(evt) {
     };
 
     renderLoading(true, newCardForm.querySelector('.popup__button'));
-    viewCards(newCard.name, newCard.link)
+    addCard(newCard.name, newCard.link)
     .then((card) => {
         cardsContainer.prepend(
             createCard(
@@ -111,7 +108,7 @@ function handleCardForm(evt) {
             cardTemplate,
             currentUserId,
             openImagePopup,
-            openDeletePopup
+            deleteCard
             ));
             newCardForm.reset();
             clearValidation(newCardPopup, validationConfig);
@@ -185,29 +182,6 @@ imagePopupCloseButton.addEventListener('click', () => {
     closeModal(imagePopup);
 });
 
-//попап удаления карточки
-export function openDeletePopup(cardId, deleteCard) {
-    openModal(deletePopupQuestion);
-    submitDeleteButton.addEventListener('click', () => {
-        deleteCard(cardId)
-            .then(() => {
-                closeDeletePopup();
-                cardsContainer.replaceChildren();
-                fetchData();
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, { once: true });
-}
-
-function closeDeletePopup() {
-    closeModal(deletePopupQuestion);
-}
-
-questionCloseButton.addEventListener('click', () => {
-    closeModal(deletePopupQuestion);
-});
 
 //загрузка
 function renderLoading(saving, button) {

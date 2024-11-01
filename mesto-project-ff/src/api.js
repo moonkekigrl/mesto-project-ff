@@ -15,14 +15,11 @@ function resCheck(res) {
 }
 
 //данные пользователя
-export function fetchUserData() {
+export function getUserData() {
     return fetch(`${config.baseUrl}/users/me`, {
         headers: config.headers,
     })
     .then(resCheck)
-    .then((userData) => {
-        return userData;
-    });
 }
 
 //редактирование профиля
@@ -40,7 +37,7 @@ export function updateProfile(name, about) {
 }
 
 //загрузка карточек
-export function fetchCardsData() {
+export function getCards() {
     return fetch(`${config.baseUrl}/cards`, {
         headers: config.headers,
     })
@@ -51,7 +48,7 @@ export function fetchCardsData() {
 }
 
 //отображение карточек
-export function viewCards(name, link) {
+export function addCard(name, link) {
     return fetch(`${config.baseUrl}/cards`, {
         method: 'POST',
         headers: config.headers,
@@ -83,7 +80,7 @@ export function removeLike(cardId) {
 }
 
 //удаление карточки
-export function deleteMyCard(cardId) {
+export function deleteCurrentUsersCard(cardId) {
     return fetch(`${config.baseUrl}/cards/${cardId}`, {
         method: 'DELETE',
         headers: config.headers,
